@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: elearning-platform
+
+build:
+  artifacts:
+    - image: elearning-monolith
+      context: ./monolith
+      docker:
+        dockerfile: Dockerfile
+    - image: elearning-web-app
+      context: ./apps/web-app
+      docker:
+        dockerfile: Dockerfile
+    - image: elearning-admin-portal
+      context: ./apps/admin-portal
+      docker:
+        dockerfile: Dockerfile
+
+deploy:
+  helm:
+    releases:
+      - name: elearning-platform
+        chartPath: ./helm/elearning-platform
+        valuesFiles:
+          - ./helm/elearning-platform/values.yaml
+        setValues:
+          image.tag: latest
+        namespace: elearning
+        wait: true
+
+profiles:
+  - name: dev
+    build:
+      local: {}
+    deploy:
+      helm:
+        releases:
+          - name: elearning-platform
+            valuesFiles:
+              - ./helm/elearning-platform/values.yaml
+              - ./helm/elearning-platform/values-dev.yaml
+            setValues:
+              image.tag: dev
+
+  - name: prod
+    build:
+      googleCloudBuild: {}
+    deploy:
+      helm:
+        releases:
+          - name: elearning-platform
+            valuesFiles:
+              - ./helm/elearning-platform/values.yaml
+              - ./helm/elearning-platform/values-production.yaml
+            setValues:
+              image.tag: prod 

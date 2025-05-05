@@ -1,0 +1,122 @@
+site_name: E-Learning Platform Documentation
+site_description: Documentation for the E-Learning Platform
+site_author: E-Learning Platform Team
+site_url: https://docs.elearning-platform.com
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - search.share
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+repo_name: elearning-platform/elearning-platform
+repo_url: https://github.com/elearning-platform/elearning-platform
+edit_uri: edit/main/docs/
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            show_source: true
+            show_root_heading: true
+            show_category_heading: true
+            show_if_no_docstring: true
+            show_signature_annotations: true
+            show_signature: true
+            show_bases: true
+            show_submodules: true
+            show_root_toc_entry: true
+            show_root_full_path: false
+            show_root_members_full_path: false
+            show_root_heading: true
+            show_category_heading: true
+            show_if_no_docstring: true
+            show_signature_annotations: true
+            show_signature: true
+            show_bases: true
+            show_submodules: true
+            show_root_toc_entry: true
+            show_root_full_path: false
+            show_root_members_full_path: false
+
+nav:
+  - Home: index.md
+  - Architecture:
+    - Overview: architecture/index.md
+    - Backend Monolith: architecture/backend-monolith/index.md
+    - Frontend Apps: architecture/frontend-apps.md
+    - Data Models: architecture/data_models.md
+    - Tech Stack: architecture/tech_stack.md
+  - API Reference:
+    - Overview: api-reference/index.md
+    - OpenAPI: api-reference/openapi/monolith-api.v1.yaml
+  - Guides:
+    - Development Setup: guides/development_setup.md
+    - Coding Conventions: guides/coding_conventions.md
+    - Testing Strategy: guides/testing_strategy.md
+    - Deployment Pipeline: guides/deployment_pipeline.md
+    - Monitoring & Alerting: guides/monitoring_alerting.md
+    - Troubleshooting: guides/troubleshooting_runbook.md
+    - Content Authoring: guides/content_authoring_guide.md
+  - ADRs:
+    - Overview: adrs/index.md
+    - Template: adrs/template.md
+    - 0001: Choose Modular Monolith: adrs/0001-choose-modular-monolith.md
+    - 0002: Backend Framework FastAPI: adrs/0002-backend-framework-fastapi.md
+    - 0003: Database Choice PostgreSQL: adrs/0003-database-choice-postgresql.md
+    - 0004: Authentication OIDC: adrs/0004-authentication-oidc.md
+    - 0005: Internal Module Communication: adrs/0005-internal-module-communication.md
+    - 0006: IaC Terraform: adrs/0006-iac-terraform.md
+    - 0007: CI/CD GitLab: adrs/0007-ci-cd-gitlab.md
+    - 0008: Frontend Tech Stack: adrs/0008-frontend-tech-stack.md
+    - 0009: Frontend State Management RTKQ: adrs/0009-frontend-state-management-rtkq.md
+    - 0010: Frontend Styling Approach: adrs/0010-frontend-styling-approach.md
+    - 0012: Video Streaming Provider: adrs/0012-video-streaming-provider.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde 
