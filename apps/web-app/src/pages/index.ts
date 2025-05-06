@@ -1,0 +1,10 @@
+export { default as HomePage } from './HomePage';
+export { default as LoginPage } from './LoginPage';
+export { default as RegisterPage } from './RegisterPage';
+export { default as BrowseCoursesPage } from './BrowseCoursesPage';
+export { default as CoursePlayerPage } from './CoursePlayerPage';
+export { default as LearningPathPage } from './LearningPathPage';
+export { default as SkillAssessmentPage } from './SkillAssessmentPage';
+export { default as UserProfilePage } from './UserProfilePage';
+export { default as SubscriptionPage } from './SubscriptionPage';
+export { default as NotFoundPage } from './NotFoundPage'; 
