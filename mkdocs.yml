@@ -13,7 +13,6 @@ theme:
     - search.highlight
     - search.suggest
     - search.share
-    - toc.integrate
   palette:
     - scheme: default
       primary: indigo
@@ -28,72 +27,9 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-repo_name: elearning-platform/elearning-platform
-repo_url: https://github.com/elearning-platform/elearning-platform
+repo_name: elearning-platform/docs
+repo_url: https://github.com/elearning-platform/docs
 edit_uri: edit/main/docs/
-
-plugins:
-  - search
-  - mkdocstrings:
-      default_handler: python
-      handlers:
-        python:
-          rendering:
-            show_source: true
-            show_root_heading: true
-            show_category_heading: true
-            show_if_no_docstring: true
-            show_signature_annotations: true
-            show_signature: true
-            show_bases: true
-            show_submodules: true
-            show_root_toc_entry: true
-            show_root_full_path: false
-            show_root_members_full_path: false
-            show_root_heading: true
-            show_category_heading: true
-            show_if_no_docstring: true
-            show_signature_annotations: true
-            show_signature: true
-            show_bases: true
-            show_submodules: true
-            show_root_toc_entry: true
-            show_root_full_path: false
-            show_root_members_full_path: false
-
-nav:
-  - Home: index.md
-  - Architecture:
-    - Overview: architecture/index.md
-    - Backend Monolith: architecture/backend-monolith/index.md
-    - Frontend Apps: architecture/frontend-apps.md
-    - Data Models: architecture/data_models.md
-    - Tech Stack: architecture/tech_stack.md
-  - API Reference:
-    - Overview: api-reference/index.md
-    - OpenAPI: api-reference/openapi/monolith-api.v1.yaml
-  - Guides:
-    - Development Setup: guides/development_setup.md
-    - Coding Conventions: guides/coding_conventions.md
-    - Testing Strategy: guides/testing_strategy.md
-    - Deployment Pipeline: guides/deployment_pipeline.md
-    - Monitoring & Alerting: guides/monitoring_alerting.md
-    - Troubleshooting: guides/troubleshooting_runbook.md
-    - Content Authoring: guides/content_authoring_guide.md
-  - ADRs:
-    - Overview: adrs/index.md
-    - Template: adrs/template.md
-    - 0001: Choose Modular Monolith: adrs/0001-choose-modular-monolith.md
-    - 0002: Backend Framework FastAPI: adrs/0002-backend-framework-fastapi.md
-    - 0003: Database Choice PostgreSQL: adrs/0003-database-choice-postgresql.md
-    - 0004: Authentication OIDC: adrs/0004-authentication-oidc.md
-    - 0005: Internal Module Communication: adrs/0005-internal-module-communication.md
-    - 0006: IaC Terraform: adrs/0006-iac-terraform.md
-    - 0007: CI/CD GitLab: adrs/0007-ci-cd-gitlab.md
-    - 0008: Frontend Tech Stack: adrs/0008-frontend-tech-stack.md
-    - 0009: Frontend State Management RTKQ: adrs/0009-frontend-state-management-rtkq.md
-    - 0010: Frontend Styling Approach: adrs/0010-frontend-styling-approach.md
-    - 0012: Video Streaming Provider: adrs/0012-video-streaming-provider.md
 
 markdown_extensions:
   - admonition
@@ -119,4 +55,66 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tilde 
+  - pymdownx.tilde
+
+nav:
+  - Home: index.md
+  - Architecture:
+    - Overview: architecture/overview.md
+    - Backend Monolith:
+      - Overview: architecture/backend-monolith/index.md
+      - Modules:
+        - Overview: architecture/backend-monolith/modules/index.md
+        - Auth: architecture/backend-monolith/modules/auth.md
+        - Identity: architecture/backend-monolith/modules/identity.md
+        - Course: architecture/backend-monolith/modules/course.md
+        - Video: architecture/backend-monolith/modules/video.md
+        - Assessment: architecture/backend-monolith/modules/assessment.md
+        - Learning Path: architecture/backend-monolith/modules/learning_path.md
+        - User Progress: architecture/backend-monolith/modules/user_progress.md
+        - Search: architecture/backend-monolith/modules/search.md
+        - Recommendation: architecture/backend-monolith/modules/recommendation.md
+        - Discussion: architecture/backend-monolith/modules/discussion.md
+        - Subscription: architecture/backend-monolith/modules/subscription.md
+        - Billing: architecture/backend-monolith/modules/billing.md
+        - Notification: architecture/backend-monolith/modules/notification.md
+        - Analytics: architecture/backend-monolith/modules/analytics.md
+      - Common Kernel: architecture/backend-monolith/common-kernel.md
+    - Frontend Apps: architecture/frontend-apps.md
+    - Data Models: architecture/data_models.md
+    - Tech Stack: architecture/tech_stack.md
+    - Diagrams:
+      - System Context: architecture/diagrams/system_context.puml
+      - Monolith Internal Modules: architecture/diagrams/monolith_internal_modules.puml
+      - Data Model Overview: architecture/diagrams/data_model_overview.puml
+      - Sequence Diagram User Auth: architecture/diagrams/sequence_diagram_user_auth.puml
+  - API Reference:
+    - Overview: api-reference/index.md
+    - OpenAPI:
+      - Monolith API v1: api-reference/openapi/monolith-api.v1.yaml
+    - Generated:
+      - Overview: api-reference/generated/index.html
+      - Monolith API: api-reference/generated/monolith-api.html
+  - Guides:
+    - Overview: guides/index.md
+    - Development Setup: guides/development_setup.md
+    - Coding Conventions: guides/coding_conventions.md
+    - Testing Strategy: guides/testing_strategy.md
+    - Deployment Pipeline: guides/deployment_pipeline.md
+    - Monitoring & Alerting: guides/monitoring_alerting.md
+    - Troubleshooting Runbook: guides/troubleshooting_runbook.md
+    - Content Authoring Guide: guides/content_authoring_guide.md
+  - ADRs:
+    - Overview: adrs/index.md
+    - Template: adrs/template.md
+    - 0001: Choose Modular Monolith: adrs/0001-choose-modular-monolith.md
+    - 0002: Backend Framework FastAPI: adrs/0002-backend-framework-fastapi.md
+    - 0003: Database Choice PostgreSQL: adrs/0003-database-choice-postgresql.md
+    - 0004: Authentication OIDC: adrs/0004-authentication-oidc.md
+    - 0005: Internal Module Communication: adrs/0005-internal-module-communication.md
+    - 0006: IAC Terraform: adrs/0006-iac-terraform.md
+    - 0007: CI/CD GitLab: adrs/0007-ci-cd-gitlab.md
+    - 0008: Frontend Tech Stack: adrs/0008-frontend-tech-stack.md
+    - 0009: Frontend State Management RTKQ: adrs/0009-frontend-state-management-rtkq.md
+    - 0010: Frontend Styling Approach: adrs/0010-frontend-styling-approach.md
+    - 0012: Video Streaming Provider: adrs/0012-video-streaming-provider.md 

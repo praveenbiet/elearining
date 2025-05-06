@@ -5,18 +5,20 @@ metadata:
 
 build:
   artifacts:
-    - image: elearning-monolith
+    - image: elearning-platform/monolith
       context: ./monolith
       docker:
         dockerfile: Dockerfile
-    - image: elearning-web-app
+    - image: elearning-platform/web-app
       context: ./apps/web-app
       docker:
         dockerfile: Dockerfile
-    - image: elearning-admin-portal
+    - image: elearning-platform/admin-portal
       context: ./apps/admin-portal
       docker:
         dockerfile: Dockerfile
+  tagPolicy:
+    gitCommit: {}
 
 deploy:
   helm:
@@ -26,9 +28,13 @@ deploy:
         valuesFiles:
           - ./helm/elearning-platform/values.yaml
         setValues:
-          image.tag: latest
-        namespace: elearning
+          image.tag: "{{.DIGEST}}"
         wait: true
+        upgradeOnChange: true
+        recreatePods: true
+        overrides:
+          imagePullSecrets:
+            - name: regcred
 
 profiles:
   - name: dev
